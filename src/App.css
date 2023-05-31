@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Markazi+Text:wght@500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Karla&display=swap');
+
 /* #49SE57 rgb(73, 94, 87)*/
 /* #F4CE14 rgb(244, 206, 20)*/
 
@@ -49,118 +49,135 @@ a:link {
 }
 
 
-/* ===== Header ===== */
+/* ===== Header.js ===== */
 
 
-.header-background {
+header {
   background-color: rgb(73, 94, 87);
   display: flex;
   height: 440px;
   justify-content: center;
-  padding: 1.8rem 0;
-  max-width: 844px;
   width: 100%;
 }
 
-.header .row {
+.headContainer {
+  max-width: 844px;
+  width: 100%;
+  padding: 1.8rem 0;
+  /* background-color: rgb(73, 94, 87);
+  display: flex;
+  height: 440px;
+  justify-content: center; */
+}
+
+.headContainer .row {
   display: flex;
   justify-content: flex-start;
 }
 
-.left-side {
-  grid-area: desc;
-  color: white;
-  padding-left: 50px;
+.headContainer .row .column {
+  flex: 1;
 }
 
-.title {
+.headContainer .row .column .title {
   font-family: "Markazi Text", serif;
   color: rgb(244, 206, 20);
 }
 
-.right-side {
-  grid-area: food;
-  border-radius: 8px;
+.headContainer .row .column .title_2 {
+  font-family: "Markazi Text", serif;
+  color: white;
+}
+
+.headContainer .row .column p {
+  /* grid-area: desc; */
+  color: white;
+  line-height: 1.4;
 }
 
 
-/* ===== Main.js ===== */
+/* === Main.js === */
 
 
-.specials-container {
-  display: grid;
-  grid-template-rows: 2;
-}
-.top-part {
-  grid-row-start: 1;
-  grid-row-end: 5;
-}
+/* ===== Specials ===== */
 
-.bottom-part {
-  justify-content: space-evenly;
-  /* display: grid;
-  gap: 10px; */
-}
 
-.specials-container .content .row {
+#weekSpecial {
+  /* padding-top: 100px; */
+  width: 100%;
+  justify-content: center;
   display: flex;
-  column-gap: 2.2rem;
+  /* flex-direction: column; */
 }
 
-.specials-container .content .row .col{
+.weekSpecialBox {
+  max-width: 844px;
+  width: 100%;
+  padding: 6rem 0;
+  display: flex;
+  flex-direction: column;
+  row-gap: 2.6rem;
+}
+
+.weekSpecialBox .top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.weekSpecialBox .content .row {
+  display: flex;
+  column-gap: .2rem;
+}
+
+.weekSpecialBox .content .row .column {
   flex: 1;
 }
 
-.specials-container .content .card{
+.weekSpecialBox .content .card {
   width: 258px;
   min-height: 420px;
   border-radius: 16px 16px 0 0;
   background-color: #d9d9d9;
 }
 
+.weekSpecialBox .content .card .cardImage {
+  width: 258px;
+}
 
-/* ===== Card.js ===== */
+/* ===== Card ===== */
 
 
-.container-card {
+/* .container-card {
   padding: 2px 16px;
   border-radius: 5px;
   background-color: rgb(237, 239, 238);
-}
+} */
 
 p.price {
   color: orange;
   font-weight: bold;
 }
 
-
-/* ===== Review.js ===== */
-
-
-.reviews {
-  /* display: flex; */
-  /* grid-template-rows: auto; */
-  margin: auto;
-  padding: 2px 16px;
-  background-color: rgb(238, 153, 114);
-}
-
-.review-name {
-  align-items: right;
+p.orderDel {
+  font-weight: bold;
+  cursor: pointer;
 }
 
 
-/* ===== Testimonial.js ===== */
+/* ===== Testimonials ===== */
 
 
 #testimonials {
   width: 100%;
   display: flex;
+  justify-content: center;
   background-color: rgb(73, 94, 87);
+  padding: 50px;
+  /* max-width: 844px; */
 }
 
 .testContainer {
-  max-width: 844px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -170,21 +187,8 @@ p.price {
 
 .testContainer h1 {
   color: rgb(244, 206, 20);
+  font-weight: 500;
   text-align: center;
-}
-
-.testimonial_section {
-  display: flex;
-  justify-content: center;
-  padding: 20px;
-  background-color: rgb(73, 94, 87);
-}
-
-.testimonial_header {
-  /* font-size: large; */
-  font-family: "Markazi Text", serif;
-  font-weight: bold;
-  color: rgb(244, 206, 20);
 }
 
 .testContainer .row {
@@ -198,22 +202,23 @@ p.price {
   flex: 1;
 }
 
-.testContainer .row .col .card{
+.testContainer .row .col .card {
   background-color: #d9d9d9;
-  flex: 1;
-  row-gap: 0.8rem;
+  border-radius: 16px;
   padding: 2.2rem 1rem;
   display: flex;
-  border-radius: 16px;
+  flex-direction: column;
   justify-content: flex-start;
+  row-gap: 0.8rem;
 }
 
-/* .testContainer .row .col .card p {
 
-} */
+.testContainer .row .col .card .person {
+  font-weight: bold;
+}
 
 
-/* ===== History.js ===== */
+/* ===== History ===== */
 
 
 #history {
@@ -245,7 +250,7 @@ p.price {
 }
 
 .wordsTwo {
-  margin-right: 400px;
+  margin-right: 200px;
 }
 
 .owners {
@@ -253,7 +258,7 @@ p.price {
 }
 
 
-/* ===== Footer.js ===== */
+/* ===== Footer ===== */
 
 footer {
   display: flex;
