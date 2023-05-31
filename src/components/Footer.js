@@ -1,20 +1,31 @@
-import Logo from '../icons_assets/Logo.svg'
+import Logo2 from '../icons_assets/Logo2.svg'
+import "../App.css";
 
 const Footer = () => {
  return (
-    <div className="">
-        <img src={Logo} alt="logo" />
-        <h2>Little Lemon</h2>
+    <footer>
+    <div className="footer_logo">
+        <img width="300px" src={Logo2} alt="logo" />
 
         <ul>
             <li>
                 <a href="#home">Home</a>
             </li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#menu">Menu</a></li>
-            <li><a href="#reservations">Reservations</a></li>
-            <li><a href="#order-online">Order Online</a></li>
-            <li><a href="#login">Login</a></li>
+            <li>
+                <a href="#about">About</a>
+            </li>
+            <li>
+                <a href="#menu">Menu</a>
+            </li>
+            <li>
+                <a href="#reservations">Reservations</a>
+            </li>
+            <li>
+                <a href="#order-online">Order Online</a>
+            </li>
+            <li>
+                <a href="#login">Login</a>
+            </li>
         </ul>
 
         <div>
@@ -33,9 +44,10 @@ const Footer = () => {
                 <li><a href="#linkedin">LinkedIn</a></li>
                 <li><a href="#youtube">YouTube</a></li>
             </ul>
+            </div>
         </div>
 
-    </div>
+    </footer>
  )
 }
 

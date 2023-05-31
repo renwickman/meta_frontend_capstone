@@ -2,29 +2,27 @@ import Logo from '../icons_assets/Logo.svg'
 
 const Nav = () => {
     return (
-       <div className="">
-           <img src={Logo} alt="logo" />
-           <h2>Little Lemon</h2>
-           <nav>
-           <ul>
-               <li>
+       <div className="navigation">
+           <img width="400px" src={Logo} alt="logo" />
+
+           <nav className="nav_links">
+            <ul>
+                <li>
                     <a href="#home">Home</a>
-                </li>
-               <li>
+                    </li>
+                    <li>
                     <a href="#about">About</a>
-                </li>
-               <li>
+                    </li>
+                    <li>
                     <a href="#menu">Menu</a>
-                </li>
-               <li>
+                    </li>
+                    <li>
                     <a href="#reservations">Reservations</a>
-                </li>
-               <li>
-                    <a href="#reservations">Reservations</a>
-               </li>
-               <li><a href="#login">Login</a>
-               </li>
-           </ul>
+                    </li>
+                    <li>
+                    <a href="#login">Login</a>
+                    </li>
+               </ul>
            </nav>
        </div>
     )
