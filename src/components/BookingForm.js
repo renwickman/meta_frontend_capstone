@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { fetchAPI, submitAPI } from "../APIs";
-import { useNavigate } from "react-router";
 import { Formik } from "formik";
 import * as Yup from 'yup';
 
@@ -34,22 +33,22 @@ export default function BookingForm(props){
     const [time, setTime] = useState([]);
     const [guests, setGuests] = useState("");
     const [occasion, setOccasion] = useState("");
-    //const navigate = useNavigate();
+    
 
     useEffect(() => {
         if(!date) return;
         setAvailableTimes(fetchAPI(new Date(date)));
-        console.log(setAvailableTimes(fetchAPI(new Date(date))));
     }, [date]);
-    const navigate = useNavigate();
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const success = submitAPI( {date, time, guests, occasion} );
-        if (success){
-            navigate("/confirmation")
-        } else return;
-        
+        props.onSubmit({ date, time, guests, occasion });
+
+        // const success = submitAPI( {date, time, guests, occasion} );
+        // if (!success){
+        //     return;
+        // }
 
         console.log(`Reservation: Date: ${date}`);
         console.log(`Time: ${time}`);
@@ -79,6 +78,9 @@ export default function BookingForm(props){
                     if (!values.occasion) {
                         errors.occasion = 'Required';
                     }
+                    if (values.occasion === '') {
+                        errors.occasion = 'Required';
+                    }
                     if (!values.guests) {
                         errors.guests = 'Required';
                     }
@@ -101,10 +103,11 @@ export default function BookingForm(props){
             onSubmit={handleSubmit}
             >
                 <div className="Date">
-                    <label htmlFor="resDate">Choose Date: </label>
+                    <label htmlFor="resDate">Choose Date:</label>
                     <input 
                         type="date"
                         id="resDate" 
+                        data-testid="date"
                         value={date} 
                         required={true}
                         onChange={(e) => {
@@ -116,13 +119,14 @@ export default function BookingForm(props){
                 <div>{errors.date && touched.date}</div>
 
                 <div className="Time">
-                    <label htmlFor="resTime">Choose Time: </label>
+                    <label htmlFor="resTime">Choose Time:</label>
                     <select 
                         id="resTime" 
+                        data-testid="time"
                         value={time} 
                         onChange={(e) => {
                             setTime(e.target.value);
-                            props.setAvailableTimes( { date: e.target.value });
+                            // props.setAvailableTimes( { date: e.target.value });
                         }}
                     >
                     {availableTimes.map((time, index) => (
@@ -136,9 +140,10 @@ export default function BookingForm(props){
                 <div>{errors.time && touched.time}</div>
 
                 <div className="Guests">
-                    <label htmlFor="resGuests">Number of Guests: </label>
+                    <label htmlFor="resGuests">Number of Guests:</label>
                     <input 
                         type="number" 
+                        data-testid="guests"
                         value={guests}
                         id="resGuests"
                         placeholder="1" 
@@ -151,9 +156,10 @@ export default function BookingForm(props){
                 <div>{errors.guests && touched.guests}</div>
 
                 <div className="Occasion">
-                    <label htmlFor="resOccasion">Occasion: </label>
+                    <label htmlFor="resOccasion">Occasion:</label>
                     <select 
-                        id="resOccasion" 
+                        id="resOccasion"
+                        data-testid="occasion" 
                         value={occasion} 
                         onChange={(e) => setOccasion(e.target.value)}>
                         <option value=""></option>
@@ -167,9 +173,10 @@ export default function BookingForm(props){
 
                 <button 
                     onClick={handleSubmit} 
+                    data-testid="submit"
                     type="submit"
-                    disabled={!(date && time && guests && occasion)}>
-                    Make Your Reservation
+                    disabled={!(date && time && guests && occasion)}
+                    >Make Your Reservation
                 </button>
             </form>
             )}

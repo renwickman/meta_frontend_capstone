@@ -157,3 +157,38 @@ const BookingForm2 = (props) => {
 }
 
 export default BookingForm2;
+
+
+         expect(onSubmit).toHaveBeenCalledWith({
+             date: '2023-06-06',
+             time: '17:00',
+             guests: '3',
+             occasion: 'Anniversary'
+    });
+
+
+    // test('Submission works', () => {
+    //     const onSubmit = jest.fn();
+    //     render(<BookingForm onClick={onSubmit} />);
+
+    //     const dateInput = screen.getAllByLabelText('Choose Date: ');
+    //     const timeInput = screen.getAllByLabelText('Choose Time: ');
+    //     const guestsInput = screen.getAllByLabelText('Number of Guests: ');
+    //     const occasionInput = screen.getAllByLabelText('Occasion: ');
+    //     const submitButton2 = screen.getByText("Reserve Your Table");
+
+    //     fireEvent.change(dateInput, { target: { value: '2023-06-05' } });
+    //     fireEvent.change(timeInput, { target: { value: '17:00' } });
+    //     fireEvent.change(guestsInput, { target: { value: '4' } });
+    //     fireEvent.change(occasionInput, { target: { value: 'Anniversary' } });
+    //     fireEvent.click(submitButton2);
+
+    //     //fireEvent.click(submitButton);
+
+    //     expect(onSubmit).toHaveBeenCalledWith({
+    //         resDate: '2023-06-05',
+    //         resTime: '17:00',
+    //         resGuests: '4',
+    //         resOccasion: 'Anniversary'
+    //     });
+    // });

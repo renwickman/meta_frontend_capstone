@@ -5,9 +5,9 @@ import { useNavigate } from "react-router";
 import { submitAPI } from "../APIs";
 
 
-export default function BookingPage(props) {
-
+export default function BookingPage() {
     const navigate = useNavigate();
+
     return(
         <div>
             <h1>Booking Page</h1>
@@ -16,11 +16,14 @@ export default function BookingPage(props) {
                 const success = submitAPI( {date, time, guests, occasion} );
                 if (success) {
                     navigate({
-                        pathname: "/confirmation"
-                    })
+                        pathname: "/confirmation",
+                        search: `?date=${date}&time=${time}&guests=${guests}&occasion=${occasion}`
+                    });
+                } else {
+                    window.alert("Try again.");
                 }
             }}
-            {...props}/>
+            />
         </div>
     );
 }
