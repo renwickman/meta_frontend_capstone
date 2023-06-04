@@ -1,35 +1,58 @@
-import Header from "./components/Header";
-import React from "react";
+import { useReducer } from "react";
 import Nav from "./components/Nav";
 import Main from "./components/Main";
-import Specials from "./components/Specials";
-import Testimonial from "./components/Testimonial";
-import History from "./components/History";
+import Footer from "./components/Footer";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-// import Footer from "./components/Footer";
-// import './App.css';
-// import { BrowserRouter } from "react-router-dom";
-// import BookingForm from "./components/BookingForm";
-// import BookingPage from "./components/BookingPage";
+//import BookingForm from "./components/BookingForm";
+import BookingPage from "./components/BookingPage";
+import { ConfirmedBooking } from "./components/ConfirmedBooking";
+
+import { fetchAPI } from "./APIs";
+
+
+
+export const updateTimes = (state, action) => fetchAPI(new Date(action.date));
+export const initializeTimes = () => { return fetchAPI(new Date())};
 
 function App() {
-  return (
-    <>
-    
-    {/* <Nav /> */}
-      {/* <Header /> */}
-      <Nav />
-        <Header />
-        <Main />
-        <Specials />
-          <Testimonial />
-            <History />
-        {/* <BookingPage />
-        <BookingForm /> */}
-        {/* <Footer /> */}
-        
-    </>
-  );
+      const [availableTimes, dispatch] = useReducer(updateTimes, initializeTimes);
+      const router = createBrowserRouter([
+        {
+          path: "/",
+          element: (
+            <>
+              <Nav />
+              <Main availableTimes={availableTimes} />
+              <Footer />
+            </>
+          ),
+        },
+        {
+          path: "/booking",
+          element: (
+            <>
+            <Nav />
+            <BookingPage 
+              availableTimes={availableTimes}
+              setAvailableTimes ={dispatch}
+              />
+            <Footer />
+            </>
+          )
+        },
+        {
+          path: "/confirmation",
+          element: (
+            <>
+            <Nav />
+            <ConfirmedBooking />
+            <Footer />
+            </>
+          )
+        },
+    ]);
+  return <RouterProvider router = {router} />;
 }
 
 export default App;

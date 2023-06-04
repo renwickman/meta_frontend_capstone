@@ -1,5 +1,6 @@
 import Logo2 from '../icons_assets/Logo2.svg'
 import "../App.css";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
  return (
@@ -8,18 +9,22 @@ const Footer = () => {
         <img width="300px" src={Logo2} alt="logo" />
 
         <ul>
+            <Link to="/">
             <li>
                 <a href="#home">Home</a>
             </li>
+            </Link>
             <li>
                 <a href="#about">About</a>
             </li>
             <li>
                 <a href="#menu">Menu</a>
             </li>
+            <Link to="/booking">
             <li>
                 <a href="#reservations">Reservations</a>
             </li>
+            </Link>
             <li>
                 <a href="#order-online">Order Online</a>
             </li>

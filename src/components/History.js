@@ -4,7 +4,7 @@ import Mario_and_Adrian_A from "../icons_assets/Mario_Adrian_A.jpg";
 import Mario_and_Adrian_B from "../icons_assets/Mario_Adrian_B.jpg";
 
 const History = () => {
-
+    return(
     <div>
         <section id="history">
                 <div className="history_section">
@@ -28,6 +28,7 @@ const History = () => {
                 </div>
             </section>
         </div>
+    )
 }
 
 export default History;

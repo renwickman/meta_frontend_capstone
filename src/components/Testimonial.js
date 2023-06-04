@@ -7,7 +7,7 @@ import reviewer3 from "../icons_assets/reviewer3.jpg";
 import reviewer4 from "../icons_assets/reviewer4.jpg";
 
 const Testimonial = () => {
-
+    return(
         <div>
         <section id="testimonials">
                     <div className="testContainer">
@@ -61,6 +61,7 @@ const Testimonial = () => {
                     </div>
                 </section>
             </div>
+    )
 }
 
 export default Testimonial;
