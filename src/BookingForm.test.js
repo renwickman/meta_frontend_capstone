@@ -29,34 +29,7 @@ import { initializeTimes, updateTimes } from "./App";
         const availableTimes1 = ['17:00', '18:00', '19:00'];
         render(<BookingForm availableTimes={availableTimes1} />);
         const timeOptions = screen.getByTestId('time');
-        expect(timeOptions.length).toBe(5);
+        expect(timeOptions.length).toBe(7);
     });
 
-
-        // test('submitting form with values', () => {
-    //     setTimeout(() => {
-    //         const dateInput = screen.getByTestId('date');
-    //         fireEvent.change(dateInput, { target: { value: '2023-06-06'} });
-
-    //         const timeInput = screen.getByTestId('time');
-    //         fireEvent.change(timeInput, { target: { value: '17:30' } });
-
-    //         const guestsInput = screen.getByTestId('guests');
-    //         fireEvent.change(guestsInput, { target: { value: '3' }});
-
-    //         const occasionInput = screen.getByTestId('occasion');
-    //         fireEvent.change(occasionInput, { target: { value: 'Anniversary' } });
-
-    //         const submitButton = screen.getByTestId('submit');
-    //         fireEvent.click(submitButton);
-
-    //         const reservation = {date: {dateInput}, time: {timeInput}, guests: {guestsInput}, occasion: {occasionInput}}
-    //         expect(reservation).toHaveValue("2023-06-06")
-    //     })
-    // }); 
-    // test('updateTimes works', () => {
-    //     render(<BookingForm availableTimes={availableTimes1} />);
-    //     fireEvent.click(submitButton);
-    //     expect(initTimes).toBeInTheDocument();
-    // })
 

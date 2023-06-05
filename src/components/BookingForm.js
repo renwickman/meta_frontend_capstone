@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { fetchAPI, submitAPI } from "../APIs";
+import { fetchAPI } from "../APIs";
 import { Formik } from "formik";
 import * as Yup from 'yup';
 
@@ -8,6 +8,8 @@ export default function BookingForm(props){
     const getDate = (today = new Date()) => {
         return today.toISOString().slice(0, 10);
     }
+
+    const todayDate = new Date().toISOString().slice(0, 10);
 
     const scheduleValid = Yup.object().shape({
         date: Yup.date()
@@ -50,7 +52,8 @@ export default function BookingForm(props){
         //     return;
         // }
 
-        console.log(`Reservation: Date: ${date}`);
+        console.log(`Reservation Date: ${date}`);
+        console.log(`${todayDate}`);
         console.log(`Time: ${time}`);
         console.log(`Number of Guests: ${guests}`);
         console.log(`Occasion: ${occasion}`);
@@ -106,7 +109,8 @@ export default function BookingForm(props){
                     <label htmlFor="resDate">Choose Date:</label>
                     <input 
                         type="date"
-                        id="resDate" 
+                        id="resDate"
+                        min={todayDate}
                         data-testid="date"
                         value={date} 
                         required={true}
@@ -123,7 +127,8 @@ export default function BookingForm(props){
                     <select 
                         id="resTime" 
                         data-testid="time"
-                        value={time} 
+                        value={time}
+                        required={true}
                         onChange={(e) => {
                             setTime(e.target.value);
                             // props.setAvailableTimes( { date: e.target.value });
@@ -146,9 +151,10 @@ export default function BookingForm(props){
                         data-testid="guests"
                         value={guests}
                         id="resGuests"
-                        placeholder="1" 
+                        placeholder="0" 
                         min="1" 
-                        max="10" 
+                        max="10"
+                        required={true}
                         onChange={(e) => setGuests(e.target.value)}>
                     </input>
                 </div>
@@ -160,7 +166,8 @@ export default function BookingForm(props){
                     <select 
                         id="resOccasion"
                         data-testid="occasion" 
-                        value={occasion} 
+                        value={occasion}
+                        required={true}
                         onChange={(e) => setOccasion(e.target.value)}>
                         <option value=""></option>
                         <option value="Birthday">Birthday</option>
