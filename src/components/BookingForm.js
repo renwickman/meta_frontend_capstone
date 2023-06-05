@@ -67,7 +67,7 @@ export default function BookingForm(props){
                 initialValues={{
                     date: '',
                     time: '',
-                    guests: 1,
+                    guests: 0,
                     occasion: '',
                 }}
                 validate={values => {
